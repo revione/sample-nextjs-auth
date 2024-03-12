@@ -25,15 +25,13 @@ export default function ResetPassword() {
             aria-live="polite"
             aria-atomic="true"
           >
-            <>
-              <p
-                className={`text-sm  ${
-                  info?.success ? "text-green-500" : "text-red-500"
-                }`}
-              >
-                {info?.message}
-              </p>
-            </>
+            <p
+              className={`text-sm  ${
+                info?.success ? "text-green-500" : "text-red-500"
+              }`}
+            >
+              {info?.message}
+            </p>
           </div>
         )}
 

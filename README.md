@@ -1,46 +1,65 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+### Next.js 14 + Next-Auth
 
-## Getting Started
+In this project, we will explore the implementation of authentication and authorization in a Next.js 14 application using Next-Auth. We will cover important aspects such as installing dependencies, using Prisma for data management, and paying attention to the auth.ts and middleware.ts files.
 
-First, run the development server:
+## What is this project about?
+
+This project is an educational guide that shows you how to integrate Next.js with Next-Auth to manage authentication and authorization in a web application. The implementation you will see here is one of the many ways you can achieve this goal.
+
+## Installing Dependencies
+
+First, make sure you have Node.js installed on your system. Then, you can install the dependencies by running one of the following commands in your terminal:
 
 ```bash
-npm run dev
+npm install
 # or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Environment Variables
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Before running the application, make sure to create a .env.local file based on the provided .env.local.example. You must provide your own AUTH_SECRET value, which is required by Next-Auth for secure authentication.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Here's an example .env.local file:
 
-## Learn More
+```plaintext
+# prisma locations database
+DATABASE_URL="file:./db/dev.db"
 
-To learn more about Next.js, take a look at the following resources:
+# Auth secret required for next-auth
+AUTH_SECRET=your_auth_secret_here
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Replace your_auth_secret_here with your own secret key. This ensures secure authentication for your Next.js application.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Using Prisma
 
-## Deploy on Vercel
+Prisma is a powerful tool that helps us manage the database easily. You can initiate a migration by running:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-
-## libraries and commands used for this project
-
-pnpm i next-auth@beta
-pnpm i prisma
-
-npx prisma init --datasource-provider sqlite
+```bash
 npx prisma migrate dev --name init
+```
 
-pnpm i bcrypt-ts
+Additionally, to visualize and manage the database, you can use Prisma Studio by running:
+
+```bash
+npx prisma studio
+```
+
+## auth.ts File
+
+The auth.ts file contains specific configuration for authentication, which is then used in the Next.js middleware. This file defines the authentication logic, including handling authentication providers and credential validation.
+
+## middleware.ts File
+
+The middleware.ts file imports the authentication configuration defined in auth.ts and uses it as middleware to process authorization before the protected page is rendered.
+
+## Actions
+
+In the app/actions directory, you will find a series of files containing functions to perform various actions, such as authenticating users, registering new users, and resetting passwords. These actions are handled on the server and used from the client-side files.
+
+## Pages
+
+Finally, in the app/pages directory, you will find the different pages of the application, including the login form, registration form, password reset page, and the protected page that requires authentication to access.
+
+We hope this guide is helpful and helps you better understand how to implement authentication and authorization in your Next.js projects. If you have any questions, feel free to consult the official documentation of Next.js and Next-Auth or leave a comment in the GitHub repository. Happy coding! 🚀

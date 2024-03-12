@@ -70,8 +70,4 @@ class UserManager {
   }
 }
 
-// Uso de la clase UserManager con Prisma
-// const prisma = new PrismaClient();
-// const userManager = new UserManager(prisma);
-
 export const userManager = new UserManager(new PrismaClient())
