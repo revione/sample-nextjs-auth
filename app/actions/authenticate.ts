@@ -24,7 +24,7 @@ export async function authenticate(
       password: formData.get("password") as string,
     })
   } catch (error) {
-    let message
+    let message = "Something went wrong."
 
     if (isRedirectError(error)) redirect("/protected", RedirectType.replace)
 
@@ -32,13 +32,15 @@ export async function authenticate(
       switch (error.type) {
         case "CredentialsSignin":
           message = "Invalid credentials."
+          break
         default:
           message = "Something went wrong."
       }
     }
+
     return {
       success: false,
-      message: "Something went wrong.",
+      message,
     }
   }
 }
