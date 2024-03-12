@@ -2,6 +2,8 @@
 
 In this project, we will explore the implementation of authentication and authorization in a Next.js 14 application using Next-Auth. We will cover important aspects such as installing dependencies, using Prisma for data management, and paying attention to the auth.ts and middleware.ts files.
 
+Take a look [onlie](https://sample-nextjs-auth.rev.earth)
+
 ## What is this project about?
 
 This project is an educational guide that shows you how to integrate Next.js with Next-Auth to manage authentication and authorization in a web application. The implementation you will see here is one of the many ways you can achieve this goal.
